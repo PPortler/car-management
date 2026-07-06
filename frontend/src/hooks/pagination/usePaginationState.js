@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const usePaginationState = (
   defaultPage = 1,
-  defaultLimit = 2
+  defaultLimit = 10
 ) => {
   const [page, setPage] = useState(defaultPage);
   const [limit, setLimit] = useState(defaultLimit);

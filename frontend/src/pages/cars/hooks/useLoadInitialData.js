@@ -9,11 +9,11 @@ export const useLoadInitialData = ({
   setTotalPages,
 }) => {
   const [cars, setCars] = useState([]);
-  const [loadingInitial, setLoadingInitial] = useState(false);
+  const [loadInitialData, setLoadInitialData] = useState(true);
 
   const loadCars = async () => {
     try {
-      setLoadingInitial(true);
+      setLoadInitialData(true);
 
       const response = await carService.getCars({
         page,
@@ -31,7 +31,7 @@ export const useLoadInitialData = ({
       setTotal(pagination.total);
       setTotalPages(pagination.totalPages);
     } finally {
-      setLoadingInitial(false);
+      setLoadInitialData(false);
     }
   };
 
@@ -41,7 +41,7 @@ export const useLoadInitialData = ({
 
   return {
     cars,
-    loadingInitial,
+    loadInitialData,
     reload: loadCars,
   };
 };
