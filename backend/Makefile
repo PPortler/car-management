@@ -1,4 +1,5 @@
-DB_URL=postgres://ptpspp:123456@localhost:5432/car_db?sslmode=disable
+include .env
+export
 
 migrate-up:
 	migrate -path migrations -database "$(DB_URL)" up
@@ -11,3 +12,9 @@ migrate-version:
 
 migrate-drop:
 	migrate -path migrations -database "$(DB_URL)" drop -f
+
+how to use:
+	make migrate-up 
+	make migrate-down
+	make migrate-version
+	make migrate-drop
