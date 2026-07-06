@@ -66,14 +66,6 @@ cd backend
 make migrate-up
 ```
 
-คำสั่ง migration อื่น ๆ:
-
-```bash
-make migrate-down
-make migrate-version
-make migrate-drop
-```
-
 ## รัน Backend
 
 ```bash
