@@ -12,5 +12,43 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  migrate:
+    image: migrate/migrate
+    container_name: car-migrate
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend/migrations:/migrations
+    command:
+      [
+        "-path",
+        "/migrations",
+        "-database",
+        "postgres://postgres:postgres@postgres:5432/car_db?sslmode=disable",
+        "up"
+      ]
+
+  backend:
+    build: ./backend
+    container_name: car-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      DB_URL: postgres://postgres:postgres@postgres:5432/car_db?sslmode=disable
+    depends_on:
+      - postgres
+
+  frontend:
+    build: ./frontend
+    container_name: car-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:

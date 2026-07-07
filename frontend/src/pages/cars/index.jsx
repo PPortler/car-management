@@ -3,7 +3,7 @@ import { Plus, Car, Edit3, Trash2 } from "lucide-react";
 import SearchInput from "@/components/common/SearchInput";
 import CommonTable from "@/components/common/Table";
 import CommonButton from "@/components/common/Button";
-import CarFormModal from "@/components/cars/CarFormModal";
+import CarFormModal from "@/components/Modals/CarFormModal";
 import { useDebounce } from "@/hooks/common/useDebounce";
 import { usePaginationState } from "@/hooks/pagination/usePaginationState";
 import { useLoadInitialData } from "./hooks/useLoadInitialData";
